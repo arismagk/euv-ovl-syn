@@ -8,7 +8,7 @@ EUV-OVL-SYN contains 200 wafers (4 lots × 50 wafers) of simulated overlay measu
 
 The dataset is generated from a two-component ground-truth model:
 
-1. **van den Brink model** — a 22-parameter polynomial capturing systematic inter- and intra-field overlay (translations, rotations, magnification, radial distortions up to 5th order). Parameters drift wafer-to-wafer according to four lot-specific physical scenarios.
+1. **Van den Brink model** — a 22-parameter polynomial capturing systematic inter- and intra-field overlay (translations, rotations, magnification, radial distortions up to 5th order). Parameters drift wafer-to-wafer according to four lot-specific physical scenarios.
 2. **Nonlinear residual** — an analytically verified component outside the Brink polynomial column space, representing lens-heating-induced intra-field distortion. This is the learning target for residual correction models.
 
 ### Lot Drift Scenarios
