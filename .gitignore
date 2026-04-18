@@ -1,0 +1,14 @@
+dat_synthetic/*.csv
+__pycache__/
+*.pyc
+*.pyo
+*.aux
+*.log
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
+.DS_Store
