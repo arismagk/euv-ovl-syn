@@ -4,7 +4,7 @@ A physically grounded synthetic overlay benchmark dataset for EUV lithography re
 
 ## Overview
 
-EUV-OVL-SYN contains 200 wafers (4 lots × 50 wafers) of simulated overlay measurements on a 300 mm ASML NXE-class scanner geometry. Each wafer has 1,420 measurement sites (71 fields × 20 dies/field), giving **284,000 overlay vectors** in total.
+EUV-OVL-SYN contains 200 wafers (4 lots × 50 wafers) of simulated overlay measurements on a 300 mm HVM wafer geometry. Each wafer has 1,420 measurement sites (71 fields × 20 dies/field), giving **284,000 overlay vectors** in total.
 
 The dataset is generated from a two-component ground-truth model:
 
@@ -48,12 +48,12 @@ Each CSV file has the following columns:
 | `OverlayX` | nm | Measured overlay in X |
 | `OverlayY` | nm | Measured overlay in Y |
 
-This schema is compatible with the ADEL metrology format used by ASML scanners.
+This schema is compatible with the HVM 300 mm wafer geometry.
 
 ## Geometry
 
 - Wafer diameter: 300 mm, fields within 138 mm radius
-- Field pitch: 26 × 33 mm (ASML NXE standard)
+- Field pitch: 26 × 33 mm 
 - 71 fields per wafer
 - Die grid: 4 × 5 per field (offsets ±3, ±9 mm in X; ±6, ±12, 0 mm in Y)
 - Metrology noise: σ = 0.15 nm (Gaussian)
