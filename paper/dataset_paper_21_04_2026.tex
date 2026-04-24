@@ -162,6 +162,61 @@
   year      = {2016}
 }
 
+@article{vanschoot2024,
+  author  = {{van Schoot}, J. and {van Ballegoij}, R. and Butler, H. and
+             {van Setten}, E. and Schiffelers, G. and Bouman, W. and
+             {van Gorp}, S. and Umstadter, K. and Zimmermann, J. and
+             Golde, D. and Neumann, J. T. and Graeupner, P.},
+  title   = {Next step in {Moore's} law: high {NA} {EUV} system overview
+             and first imaging and overlay performance},
+  journal = {J. Micro/Nanopatterning, Mater., Metrol.},
+  volume  = {24},
+  number  = {1},
+  pages   = {011009},
+  year    = {2024},
+  doi     = {10.1117/1.JMM.24.1.011009}
+}
+
+@article{rui2025,
+  author  = {Rui, D. and Zhang, L. and Wei, Y. and Su, Y.},
+  title   = {Method of high-order advanced lithography overlay correction
+             to enhance the manufacturing performance of integrated circuits},
+  journal = {Nanoscale Adv.},
+  year    = {2025},
+  doi     = {10.1039/D5NA00682A}
+}
+
+@misc{guerrero2025,
+  author       = {Guerrero, R. D.},
+  title        = {Physics-Constrained Adaptive Neural Networks Enable
+                  Real-Time Semiconductor Manufacturing Optimization
+                  with Minimal Training Data},
+  year         = {2025},
+  howpublished = {arXiv:2511.12788}
+}
+
+@misc{pendyala2024,
+  author       = {Pendyala, V. K. and Sarjoughian, H. S. and
+                  Potineni, B. and Yellig, E. J.},
+  title        = {A Benchmark Time Series Dataset for Semiconductor
+                  Fabrication Manufacturing Constructed using
+                  Component-based Discrete-Event Simulation Models},
+  year         = {2024},
+  howpublished = {arXiv:2408.09307}
+}
+
+@misc{magklaras2026zenodo,
+  author    = {Magklaras, A. and Tsirogiannis, G. and Birbas, A.
+               and Gogos, C. and Alefragis, P.},
+  title     = {{EUV-OVL-SYN}: A Scanner-Informed Synthetic Overlay
+               Benchmark Dataset for {EUV} Lithography Calibration},
+  year      = {2026},
+  publisher = {Zenodo},
+  version   = {v1.0},
+  doi       = {10.5281/zenodo.19725620},
+  url       = {https://doi.org/10.5281/zenodo.19725620}
+}
+
 \end{filecontents*}
 
 % ==========================================================================
@@ -176,11 +231,12 @@
 \author{
 \IEEEauthorblockN{
 Aris Magklaras\IEEEauthorrefmark{1},
-Christos Gogos\IEEEauthorrefmark{3},
+George Tsirogiannis \IEEEauthorrefmark{2}.
 Alexios Birbas\IEEEauthorrefmark{1},
-Panayiotis Alefragis\IEEEauthorrefmark{2},
-George Tsirogiannis \IEEEauthorrefmark{2}
+Christos Gogos\IEEEauthorrefmark{3},
+Panayiotis Alefragis\IEEEauthorrefmark{2}
 }
+
 \IEEEauthorblockA{\IEEEauthorrefmark{1}Electrical and Computer Engineering Department, University of Patras, Rio, Greece}
 \IEEEauthorblockA{\IEEEauthorrefmark{2}University of Patras, Patras, Greece}
 \IEEEauthorblockA{\IEEEauthorrefmark{3}Informatics and Telecommunications Department, University of Ioannina, Ioannina, Greece}
@@ -200,7 +256,7 @@ George Tsirogiannis \IEEEauthorrefmark{2}
 We present \textsc{EUV-OVL-SYN}, an open and fully reproducible synthetic
 benchmark dataset for developing and evaluating overlay correction algorithms
 in 300\,mm wafer extreme-ultraviolet (EUV) lithography.
-The dataset preseves the physical signal hierarchy of real scanner data, Namely,
+The dataset preserves the physical signal hierarchy of real scanner data, namely,
 a dominant inter-field Brink/van~den~Brink polynomial fingerprint
 (cross-wafer $R^2 \ge 0.93$), four distinct lot-level temporal drift
 scenarios modelling linear scanner heating, reticle alignment drift,
@@ -228,23 +284,24 @@ metrology, intra-field variation.
 Overlay is the alignment accuracy between consecutive patterning layers and it
 is among the most critical manufacturing and monitoring parameters governing transistor density and yield
 at advanced nodes.  EUV lithography, especially at sub-5\,nm nodes requires extremely tight overlay budgets
-\cite{levinson2022, vanschoot2019}.  Achieving this demands
+\cite{levinson2022, vanschoot2019}, with the transition to High-NA EUV (0.55-NA)
+pushing overlay requirements below 1\,nm \cite{vanschoot2024}.  Achieving this demands
 accurate correction of the systematic overlay fingerprint induced by scanner (i.e. EUV photolithographic machines)
 optics, stage mechanics, and chuck thermal cycling.
 
 The classical correction tool is the Brink/van~den~Brink polynomial model
 \cite{brink1994, vandenBrink1996}, which expresses the inter-field overlay
 error as a 22-parameter weighted combination of wafer-stage coordinates.
-Fitted once per lot bsed on a limited set of training wafers, it reduces overlay
+Fitted once per lot based on a limited set of training wafers, it reduces overlay
 $3\sigma$ metric from $\sim\!7$–$9$\,nm (raw) to $\sim\!1.5$–$2.5$\,nm
 \cite{phillips2020}.  The remaining systematic residual, arising from
 thermal related asymmetries \cite{houlihan2007}, reticle bowing, and intra-field
 aberrations \cite{magklaras2025, bornwolf1999} — cannot be described by any
-fixed polynomial of this calss of models, and lately, machine learning (ML) post-correction techniques have been proposed
+fixed polynomial of this clas of models, and lately, machine learning (ML) post-correction techniques have been proposed
 \cite{smith2018, abbe2019, kim2020, raissi2019}.
 
 A limiting barrier to ML research in this domain is the absence of open and realistic
-datasets.  Real scanner overlay data are commercially sensitive; their
+datasets \cite{pendyala2024}.  Real scanner overlay data are commercially sensitive; their
 publication might violate confidentiality agreements between chipmakers and scanner
 OEMs.  Existing public simulation datasets either model overlay as isotropic
 Gaussian noise (providing no systematic structure for learning) \cite{magklaras2025} or use
@@ -291,8 +348,8 @@ models the complete lot-level hierarchy including cross-wafer temporal drift.
 
 Data-driven correction of Brink residuals has been explored using Gaussian
 process regression, random forests, and deep neural networks
-\cite{smith2018, abbe2019, kim2020}.  Physics-guided neural networks
-(PGNNs) \cite{raissi2019} have attracted attention for their ability to
+\cite{smith2018, abbe2019, kim2020, rui2025}.  Physics-guided neural networks
+(PGNNs) \cite{raissi2019, guerrero2025} have attracted attention for their ability to
 preserve spatial patterns and incorporate rotational symmetry priors that are known to
 govern overlay distortion fields.  All of these methods require an annotated
 dataset with known ground-truth decomposition to validate that a model
@@ -739,8 +796,17 @@ semiconductor metrology community to develop, compare, and rigorously
 validate the next generation of overlay correction algorithms.
 
 
+\section*{Acknowledgements}
+This work was partially supported through the HCCC Chips-JU project
+(GA 101217803).
+
 \section*{Data and Code Availability}
-The dataset and the accompanying source code are publicly available in the GitHub repository associated with this paper: \url{https://github.com/arismagk/euv-ovl-syn}. The repository also provides documentation and usage instructions to support reproducibility.
+The source code and dataset generator are publicly available on GitHub at
+\url{https://github.com/arismagk/euv-ovl-syn}.
+A permanently archived version of the dataset is deposited on Zenodo
+\cite{magklaras2026zenodo} at \url{https://doi.org/10.5281/zenodo.19725620}.
+The repository provides documentation and usage instructions to support
+full reproducibility.
 
 \appendix
 % ==========================================================================

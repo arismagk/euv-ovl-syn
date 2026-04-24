@@ -253,9 +253,19 @@ def fig_residual_pattern() -> None:
 
     fig, axes = plt.subplots(2, 2, figsize=(7.0, 5.8))
 
-    lot_amps = {1: 1.0, 2: 0.80, 3: 1.30, 4: 0.95}
     lot_names = {1: "Lot 1", 2: "Lot 2", 3: "Lot 3", 4: "Lot 4"}
     WAFER_MID = 25   # mid-lot time amplitude
+    ARROW_SCALE = 0.8  # mm per nm — makes arrows visible in die-coordinate space
+
+    # Pre-compute global vmax so all panels share the same colour range
+    all_mags = []
+    for lot_tmp in [1, 2, 3, 4]:
+        rx_tmp, ry_tmp = nonlinear_residual(
+            Xw_flat, Yw_flat, xd_flat, yd_flat,
+            lot_tmp, WAFER_MID - 1, N_WAFERS
+        )
+        all_mags.append(np.sqrt(rx_tmp**2 + ry_tmp**2).max())
+    vmax_global = max(all_mags)
 
     for idx, lot in enumerate([1, 2, 3, 4]):
         ax = axes.flat[idx]
@@ -267,13 +277,13 @@ def fig_residual_pattern() -> None:
 
         im = ax.pcolormesh(xd_vec, yd_vec, mag,
                            cmap="inferno", shading="gouraud",
-                           vmin=0)
-        # Overlay quiver arrows on a coarser grid
+                           vmin=0, vmax=vmax_global)
+        # Quiver arrows: scale nm → mm so they are visible on the die grid
         skip = 12
         ax.quiver(XD[::skip, ::skip], YD[::skip, ::skip],
-                  rx.reshape(shape)[::skip, ::skip],
-                  ry.reshape(shape)[::skip, ::skip],
-                  scale=25, scale_units="xy",
+                  rx.reshape(shape)[::skip, ::skip] * ARROW_SCALE,
+                  ry.reshape(shape)[::skip, ::skip] * ARROW_SCALE,
+                  scale=1, scale_units="xy",
                   color="white", alpha=0.8, width=0.005,
                   headwidth=3, headlength=4)
 

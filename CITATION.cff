@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite the accompanying paper."
+title: "EUV-OVL-SYN: A Scanner-Informed Synthetic Overlay Benchmark Dataset for EUV Lithography Calibration"
+version: v1.0
+date-released: 2026-04-24
+repository-code: https://github.com/arismagk/euv-ovl-syn
+doi: 10.5281/zenodo.19725620
+license: MIT
+authors:
+  - family-names: Magklaras
+    given-names: Aris
+    affiliation: "Electrical and Computer Engineering Department, University of Patras, Greece"
+    email: a.magklaras@upnet.gr
+  - family-names: Tsirogiannis
+    given-names: George
+    affiliation: "University of Patras, Greece"
+    email: gtsirogianni@upatras.gr
+  - family-names: Birbas
+    given-names: Alexios
+    affiliation: "Electrical and Computer Engineering Department, University of Patras, Greece"
+    email: birbas@ece.upatras.gr
+  - family-names: Gogos
+    given-names: Christos
+    affiliation: "Informatics and Telecommunications Department, University of Ioannina, Greece"
+    email: cgogos@uoi.gr
+  - family-names: Alefragis
+    given-names: Panayiotis
+    affiliation: "University of Patras, Greece"
+    email: alefrag@uop.gr
+preferred-citation:
+  type: conference-paper
+  authors:
+    - family-names: Magklaras
+      given-names: Aris
+    - family-names: Tsirogiannis
+      given-names: George
+    - family-names: Birbas
+      given-names: Alexios
+    - family-names: Gogos
+      given-names: Christos
+    - family-names: Alefragis
+      given-names: Panayiotis
+  title: "A Scanner-Informed Synthetic Overlay Benchmark Dataset for EUV Lithography Calibration"
+  year: 2026
+  notes: "Update this entry with the journal/conference name and DOI once the paper is accepted."
