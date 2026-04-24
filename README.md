@@ -64,7 +64,7 @@ If you use this dataset, please cite:
 
 ```bibtex
 @inproceedings{magklaras2025euv,
-  author    = {Magklaras, A. and Alefragis, P. and Gogos, C. and Birbas, A.},
+  author    = {Magklaras, A. Tsirogiannis G., Alefragis, P., Gogos, C. and Birbas, A.},
   title     = {{EUV-OVL-SYN}: A Physically Grounded Synthetic Overlay Benchmark Dataset
                for {EUV} Lithography},
   booktitle = {Proc. IEEE},
